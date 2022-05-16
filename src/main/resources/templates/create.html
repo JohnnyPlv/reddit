@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create account</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+<div class="holder">
+<form th:action="@{/create}" th:object="${user}" method="post">
+    <h1> Create an account</h1>
+    <div class ="username" >
+        <label for="userName">Username</label>
+        <input th:field="*{name}" name="name" id="userName" type="text" placeholder="Your username" pattern="[a-z]+" required/>
+    </div>
+    <div class ="password">
+        <label for="passwordOne">Password</label>
+        <div class="forgotPassword">
+            <input th:field="*{password}" name="passwordOne" type="password" id="passwordOne" required/>
+        </div>
+    </div>
+    <div class ="password">
+        <label for="passwordTwo">Password verification</label>
+        <div class="forgotPassword">
+            <input name="passwordTwo" type="password" id="passwordTwo" required/>
+        </div>
+    </div>
+    <div class ="button">
+        <button type="submit">Create account</button>
+    </div>
+    <div>
+        <span th:text="${noMatch}" style="color: red"></span>
+        <span th:text="${userExists}" style="color: red"></span>
+    </div>
+</form>
+</div>
+</body>
+</html>
